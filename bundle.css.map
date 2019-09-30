@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "../src/App.svelte"
+  ],
+  "sourcesContent": [
+    "<script>\n  import { fly } from 'svelte/transition';\n\n  let name = 'world';\n\n  let score = 0;\n\n  function incrementScore() {\n    score += 1;\n  }\n\n  const NUMBER_OF_MOLES = 16;\n  const POSITIONS = [...Array(NUMBER_OF_MOLES).keys()];\n  const MAX_RETRACT_TIME = 5000;\n\n  let moles = new Set([]);\n\n  const whackMole = moleNumber => () => {\n    moles.delete(moleNumber);\n    score += 1;\n    moles = moles;\n  };\n\n  const addMole = () => {\n    const newMole = Math.floor(Math.random() * NUMBER_OF_MOLES);\n    moles.add(newMole);\n    const timeBeforeItRectracts = Math.floor(Math.random() * MAX_RETRACT_TIME);\n    setTimeout(moleRectracts(newMole), timeBeforeItRectracts)\n    moles = moles;\n  };\n\n  const moleRectracts = moleNumber => () => {\n    moles.delete(moleNumber);\n    moles = moles;\n  };\n\n  setInterval(addMole, 1000);\n</script>\n\n<style>\n  .field {\n    display: grid;\n    grid-gap: 5px;\n    grid-template-columns: repeat(4, min-content);\n  }\n\n  .hill {\n    background-color: red;\n    width: 80px;\n    height: 80px;\n  }\n  .mole {\n  }\n</style>\n\n{score}\n<div class=\"field\">\n  {#each POSITIONS as position}\n    <div class=\"hill\">\n      {#if moles.has(position)}\n        <button\n          transition:fly={{ y: 80 }}\n          on:click={whackMole(position)}\n          class=\"mole\">\n          mole\n        </button>\n      {/if}\n    </div>\n  {/each}\n</div>\n<h1>Hello {name}!</h1>\n"
+  ],
+  "names": [],
+  "mappings": "AAwCE,MAAM,cAAC,CAAC,AACN,OAAO,CAAE,IAAI,CACb,QAAQ,CAAE,GAAG,CACb,qBAAqB,CAAE,OAAO,CAAC,CAAC,CAAC,WAAW,CAAC,AAC/C,CAAC,AAED,KAAK,cAAC,CAAC,AACL,gBAAgB,CAAE,GAAG,CACrB,KAAK,CAAE,IAAI,CACX,MAAM,CAAE,IAAI,AACd,CAAC"
+}
