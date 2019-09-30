@@ -40,7 +40,7 @@ module.exports = {
     },
     {
       files: '*.svelte',
-      options: { parser: 'svelte', svelteStrictMode: true, printWidth: 120 },
+      options: { parser: 'svelte', svelteStrictMode: false, printWidth: 80 },
     },
   ],
 };

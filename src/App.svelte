@@ -41,7 +41,12 @@
   {#each positions as position}
     <div class="hill">
       {#if moles.has(position)}
-        <button transition:fly="{{ y: 80, opacity: 100 }}" on:click="{killMole(position)}" class="mole">mole</button>
+        <button
+          transition:fly={{ y: 80, opacity: 100 }}
+          on:click={killMole(position)}
+          class="mole">
+          mole
+        </button>
       {/if}
     </div>
   {/each}
