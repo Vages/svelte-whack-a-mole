@@ -61,9 +61,12 @@
     width: 80px;
     height: 80px;
   }
+  .score {
+    font-weight: bold;
+    font-size: 4rem;
+  }
 </style>
 
-{score}
 <div class="field">
   {#each POSITIONS as position}
     <div class="hill">
@@ -79,4 +82,4 @@
     </div>
   {/each}
 </div>
-<h1>Hello {name}!</h1>
+<div class="score">Score: {score}</div>
