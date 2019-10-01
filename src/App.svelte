@@ -55,6 +55,10 @@
   }
 
   h1 {
+    font-size: 3rem;
+    letter-spacing: 0.6rem;
+    text-transform: uppercase;
+    font-weight: black;
     text-align: center;
   }
 
@@ -65,26 +69,29 @@
     padding: calc(var(--base-size) / 5);
     grid-template-columns: repeat(4, var(--base-size));
     grid-auto-rows: calc(4 * var(--base-size) / 5);
-
+    border-radius: calc(var(--base-size) / 4) calc(var(--base-size) / 4) 0 0;
     transform-style: preserve-3d;
   }
 
   .front {
+    border-radius: 0 0 calc(var(--base-size) / 4) calc(var(--base-size) / 4);
+    color: #793f14;
+    background-color: #f8d649;
     margin: 0 auto;
     /*width: calc(var(--base-size) * 4);*/
     padding: 1rem;
     height: var(--base-size);
-    background-color: black;
     transform-style: preserve-3d;
     transform-origin: top;
-    transform: rotateX(calc(-1 * var(--top-rotation))); /*translateX(-calc(var(--base-size) / 2)); !*rotateX(-60deg);*/
+    transform: rotateX(
+      calc(-1 * var(--top-rotation))
+    ); /*translateX(-calc(var(--base-size) / 2)); !*rotateX(-60deg);*/
   }
 
   .cell {
     width: 100%;
     display: flex;
     align-items: center;
-
     transform-style: preserve-3d;
   }
 
@@ -112,7 +119,7 @@
   }
 </style>
 
-<h1>Mos en mus</h1>
+<h1>Mos ei mus!</h1>
 <div class="the-perspective">
   <div class="cheese">
     <div class="top">
