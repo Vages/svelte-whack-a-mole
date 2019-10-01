@@ -14,8 +14,8 @@
   const POSITIONS = [...Array(NUMBER_OF_MOLES).keys()];
   const MAX_RETRACT_TIME = 5000;
 
-  // let moles = new Set([]);
-  let moles = new Set([...Array(NUMBER_OF_MOLES).keys()]);
+  let moles = new Set([]);
+  // let moles = new Set([...Array(NUMBER_OF_MOLES).keys()]);
 
   const whackMole = moleNumber => () => {
     moles.delete(moleNumber);
@@ -45,6 +45,7 @@
   }
 
   .cheese {
+    transform-style: preserve-3d;
     margin: 30px auto;
     padding: 20px;
     background-color: #f9e267;
@@ -56,6 +57,7 @@
   }
 
   .hole {
+    transform-style: preserve-3d;
     border-radius: 50%;
     background-color: #cfb023;
     font-size: 80px;
@@ -64,7 +66,7 @@
     margin: 30px 0;
   }
   .mole {
-    transform: rotateX(-60deg);
+    transform: rotateX(-45deg) translateY(-20px) translateZ(20px);
     font-size: 50px;
     position: relative;
     top: -80px;
