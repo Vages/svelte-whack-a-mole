@@ -8,12 +8,12 @@
     score += 1;
   }
 
-  const NUMBER_OF_MOLES = 16;
-  const POSITIONS = [...Array(NUMBER_OF_MOLES).keys()];
+  const NUMBER_OF_MICE = 16;
+  const POSITIONS = [...Array(NUMBER_OF_MICE).keys()];
   const MAX_RETRACT_TIME = 5000;
 
-  let mice = new Set([]);
-  // let mice = new Set([...Array(NUMBER_OF_MOLES).keys()]);
+  // let mice = new Set([]);
+  let mice = new Set([...Array(NUMBER_OF_MICE - 4).keys()]);
 
   const whackMouse = mouseNumber => () => {
     mice.delete(mouseNumber);
@@ -22,7 +22,7 @@
   };
 
   const addMouse = () => {
-    const newMouse = Math.floor(Math.random() * NUMBER_OF_MOLES);
+    const newMouse = Math.floor(Math.random() * NUMBER_OF_MICE);
     mice.add(newMouse);
     const timeBeforeItRectracts = Math.floor(Math.random() * MAX_RETRACT_TIME);
     setTimeout(mouseRectracts(newMouse), timeBeforeItRectracts);
@@ -34,10 +34,14 @@
     mice = mice;
   };
 
-  setInterval(addMouse, 1000);
+  // setInterval(addMouse, 1000);
 </script>
 
 <style>
+  .container {
+    perspective: 22cm;
+  }
+
   h1 {
     text-align: center;
   }
@@ -48,31 +52,40 @@
     width: 60vmin;
     display: grid;
     grid-gap: 5%;
-    padding: 5%;
+    padding: 2% 5%;
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: 1fr;
+
+    transform: rotateX(45deg);
+    transform-style: preserve-3d;
   }
 
   .holeContainer {
+    content: ' ';
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
+
+    transform-style: preserve-3d;
   }
 
   .hole {
-    /*flex-shrink: 0;*/
+    flex-shrink: 0;
+    flex-grow: 1;
     width: 100%;
-    height: 30%;
+    height: 50%;
     border-radius: 50%;
     background-color: #cfb023;
   }
 
   .mouse {
-    margin-top: -50%;
+    transform: rotateX(-45deg) translateY(-40%);
+
+    /*margin-top: -50%;*/
     margin-left: -100%;
     width: 100%;
-    height: 100%;
+    /*height: 100%;*/
     font-size: 100%;
     background: none;
     border: none;
@@ -148,7 +161,7 @@
         {#if mice.has(position)}
           <button
             class="mouse"
-            transition:fly={{ y: 50 }}
+            transition:fly={{ y: 100, opacity: 100 }}
             on:click={whackMouse(position)}>
             <img src="/mouse-face.png" />
           </button>
