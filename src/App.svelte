@@ -12,8 +12,8 @@
   const POSITIONS = [...Array(NUMBER_OF_MICE).keys()];
   const MAX_RETRACT_TIME = 5000;
 
-  // let mice = new Set([]);
-  let mice = new Set([...Array(NUMBER_OF_MICE).keys()]);
+  let mice = new Set([]);
+  // let mice = new Set([...Array(NUMBER_OF_MICE).keys()]);
 
   const whackMouse = mouseNumber => () => {
     mice.delete(mouseNumber);
@@ -34,7 +34,7 @@
     mice = mice;
   };
 
-  // setInterval(addMouse, 1000);
+  setInterval(addMouse, 1000);
 </script>
 
 <style>
