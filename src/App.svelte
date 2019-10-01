@@ -2,8 +2,6 @@
   import { fly } from 'svelte/transition';
   import GithubCorner from './GithubCorner.svelte';
 
-  let name = 'world';
-
   let score = 0;
 
   function incrementScore() {
@@ -14,29 +12,29 @@
   const POSITIONS = [...Array(NUMBER_OF_MOLES).keys()];
   const MAX_RETRACT_TIME = 5000;
 
-  let moles = new Set([]);
-  // let moles = new Set([...Array(NUMBER_OF_MOLES).keys()]);
+  // let mice = new Set([]);
+  let mice = new Set([...Array(NUMBER_OF_MOLES).keys()]);
 
-  const whackMole = moleNumber => () => {
-    moles.delete(moleNumber);
+  const whackMouse = mouseNumber => () => {
+    mice.delete(mouseNumber);
     score += 1;
-    moles = moles;
+    mice = mice;
   };
 
-  const addMole = () => {
-    const newMole = Math.floor(Math.random() * NUMBER_OF_MOLES);
-    moles.add(newMole);
+  const addMouse = () => {
+    const newMouse = Math.floor(Math.random() * NUMBER_OF_MOLES);
+    mice.add(newMouse);
     const timeBeforeItRectracts = Math.floor(Math.random() * MAX_RETRACT_TIME);
-    setTimeout(moleRectracts(newMole), timeBeforeItRectracts);
-    moles = moles;
+    setTimeout(mouseRectracts(newMouse), timeBeforeItRectracts);
+    mice = mice;
   };
 
-  const moleRectracts = moleNumber => () => {
-    moles.delete(moleNumber);
-    moles = moles;
+  const mouseRectracts = mouseNumber => () => {
+    mice.delete(mouseNumber);
+    mice = mice;
   };
 
-  setInterval(addMole, 1000);
+  // setInterval(addMouse, 1000);
 </script>
 
 <style>
@@ -65,7 +63,7 @@
     height: 20px;
     margin: 30px 0;
   }
-  .mole {
+  .mouse {
     transform: rotateX(-45deg) translateY(2px) translateZ(20px);
     font-size: 50px;
     position: relative;
@@ -89,11 +87,11 @@
     {#each POSITIONS as position}
       <div class="hole">
         <!--      🗻-->
-        {#if moles.has(position)}
+        {#if mice.has(position)}
           <button
-            class="mole"
+            class="mouse"
             transition:fly={{ y: 80, opacity: 100 }}
-            on:click={whackMole(position)}>
+            on:click={whackMouse(position)}>
             🐭
           </button>
         {/if}
