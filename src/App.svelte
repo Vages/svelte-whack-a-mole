@@ -39,11 +39,12 @@
 
 <style>
   :root {
-    --base-size: 15vmin;
+    --base-size: 13vmin;
     --top-rotation: 30deg;
   }
 
   .the-perspective {
+    /*margin: calc(-.5 * var(--base-size));*/
     perspective: 1000px;
   }
 
@@ -62,15 +63,31 @@
     text-align: center;
   }
 
+  .top,
+  top:before {
+    border-radius: calc(var(--base-size) / 4) calc(var(--base-size) / 4) 0 0;
+  }
+
   .top {
-    background-color: #f9e267;
+    background: #fae358;
     display: grid;
-    grid-gap: calc(var(--base-size) / 5);
-    padding: calc(var(--base-size) / 5);
+    grid-gap: calc(var(--base-size) / 2) calc(var(--base-size) / 2);
+    padding: calc(var(--base-size) / 3);
     grid-template-columns: repeat(4, var(--base-size));
     grid-auto-rows: calc(4 * var(--base-size) / 5);
-    border-radius: calc(var(--base-size) / 4) calc(var(--base-size) / 4) 0 0;
     transform-style: preserve-3d;
+  }
+
+  .top:before {
+    content: ' ';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background: linear-gradient(
+      rgba(253, 244, 133, 0),
+      rgba(253, 244, 133, 0.5)
+    );
   }
 
   .front {
@@ -78,14 +95,11 @@
     color: #793f14;
     background-color: #f8d649;
     margin: 0 auto;
-    /*width: calc(var(--base-size) * 4);*/
     padding: 1rem;
     height: var(--base-size);
     transform-style: preserve-3d;
     transform-origin: top;
-    transform: rotateX(
-      calc(-1 * var(--top-rotation))
-    ); /*translateX(-calc(var(--base-size) / 2)); !*rotateX(-60deg);*/
+    transform: rotateX(calc(-1 * var(--top-rotation)));
   }
 
   .cell {
@@ -100,7 +114,7 @@
     height: calc(var(--base-size) / 3);
     flex-shrink: 0;
     border-radius: 50%;
-    background-color: #cfb023;
+    background-color: #b07127;
   }
 
   .mouse {
