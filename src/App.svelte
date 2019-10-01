@@ -66,7 +66,7 @@
     margin: 30px 0;
   }
   .mole {
-    transform: rotateX(-45deg) translateY(-20px) translateZ(20px);
+    transform: rotateX(-45deg) translateY(2px) translateZ(20px);
     font-size: 50px;
     position: relative;
     top: -80px;
@@ -92,7 +92,7 @@
         {#if moles.has(position)}
           <button
             class="mole"
-            transition:fly={{ y: 80 }}
+            transition:fly={{ y: 80, opacity: 100 }}
             on:click={whackMole(position)}>
             🐭
           </button>
