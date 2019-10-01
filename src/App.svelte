@@ -12,8 +12,8 @@
   const POSITIONS = [...Array(NUMBER_OF_MICE).keys()];
   const MAX_RETRACT_TIME = 5000;
 
-  // let mice = new Set([]);
-  let mice = new Set([...Array(NUMBER_OF_MICE - 4).keys()]);
+  let mice = new Set([]);
+  // let mice = new Set([...Array(NUMBER_OF_MICE - 4).keys()]);
 
   const whackMouse = mouseNumber => () => {
     mice.delete(mouseNumber);
@@ -34,10 +34,14 @@
     mice = mice;
   };
 
-  // setInterval(addMouse, 1000);
+  setInterval(addMouse, 1000);
 </script>
 
 <style>
+  :root {
+    --base-size: 12vmin;
+  }
+
   .container {
     perspective: 22cm;
   }
@@ -45,16 +49,16 @@
   h1 {
     text-align: center;
   }
+
   .cheese {
     margin: 0 auto;
     background-color: #f9e267;
-    width: 60vmin;
-    height: 70vmin;
+    width: min-content;
     display: grid;
-    grid-gap: 5%;
-    padding: 2% 5%;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 1fr;
+    grid-gap: calc(var(--base-size) / 5);
+    padding: calc(var(--base-size) / 5);
+    grid-template-columns: repeat(4, var(--base-size));
+    grid-auto-rows: calc(4 * var(--base-size) / 5);
 
     transform: rotateX(45deg);
     transform-style: preserve-3d;
@@ -69,18 +73,17 @@
   }
 
   .hole {
-    width: 100%;
-    height: 100%;
+    width: var(--base-size);
+    height: calc(var(--base-size) / 3);
+    flex-shrink: 0;
     border-radius: 50%;
     background-color: #cfb023;
   }
 
   .mouse {
     transform: rotateX(-45deg) translateY(-50%);
-
-    margin: 0;
+    margin: -100%;
     padding: 0;
-    margin-left: -100%;
     width: 100%;
     background: none;
     border: none;
