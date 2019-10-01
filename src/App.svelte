@@ -12,8 +12,8 @@
   const POSITIONS = [...Array(NUMBER_OF_MICE).keys()];
   const MAX_RETRACT_TIME = 5000;
 
-  let mice = new Set([]);
-  // let mice = new Set([...Array(NUMBER_OF_MICE - 4).keys()]);
+  // let mice = new Set([]);
+  let mice = new Set([...Array(NUMBER_OF_MICE).keys()]);
 
   const whackMouse = mouseNumber => () => {
     mice.delete(mouseNumber);
@@ -34,12 +34,13 @@
     mice = mice;
   };
 
-  setInterval(addMouse, 1000);
+  // setInterval(addMouse, 1000);
 </script>
 
 <style>
   :root {
     --base-size: 15vmin;
+    --top-rotation: 30deg;
   }
 
   .the-perspective {
@@ -47,9 +48,9 @@
   }
 
   .cheese {
+    transform: rotateX(var(--top-rotation));
     margin: 0 auto;
     width: min-content;
-    transform: rotateX(45deg);
     transform-style: preserve-3d;
   }
 
@@ -76,7 +77,7 @@
     background-color: black;
     transform-style: preserve-3d;
     transform-origin: top;
-    transform: rotateX(-60deg); /*translateX(-calc(var(--base-size) / 2)); /*rotateX(-60deg);*/
+    transform: rotateX(calc(-1 * var(--top-rotation))); /*translateX(-calc(var(--base-size) / 2)); !*rotateX(-60deg);*/
   }
 
   .cell {
@@ -96,12 +97,13 @@
   }
 
   .mouse {
-    transform: rotateX(-45deg) translateY(-50%);
+    transform: rotateX(calc(-1 * var(--top-rotation))) translateY(-50%);
     margin: -100%;
     padding: 0;
     width: 100%;
     background: none;
     border: none;
+    cursor: pointer;
   }
 
   img {
