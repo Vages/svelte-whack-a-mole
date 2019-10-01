@@ -40,19 +40,22 @@
 </script>
 
 <style>
+  .container {
+    perspective: 22cm;
+  }
+
   .cheese {
-    margin: 30px;
+    margin: 30px auto;
     padding: 20px;
     background-color: #f9e267;
     width: min-content;
     display: grid;
     grid-gap: 5px;
     grid-template-columns: repeat(4, min-content);
+    transform: rotateX(45deg);
   }
 
   .hole {
-    /*position: fixed;*/
-    /*content: 'aosnethusntahoeu';*/
     border-radius: 50%;
     background-color: #cfb023;
     font-size: 80px;
@@ -61,6 +64,7 @@
     margin: 30px 0;
   }
   .mole {
+    transform: rotateX(-60deg);
     font-size: 50px;
     position: relative;
     top: -80px;
@@ -72,25 +76,28 @@
   }
   .score {
     font-weight: bold;
+    text-align: center;
     font-size: 4rem;
   }
 </style>
 
-<h1>Mos en mus</h1>
-<div class="cheese">
-  {#each POSITIONS as position}
-    <div class="hole">
-      <!--      🗻-->
-      {#if moles.has(position)}
-        <button
-          class="mole"
-          transition:fly={{ y: 80 }}
-          on:click={whackMole(position)}>
-          🐭
-        </button>
-      {/if}
-    </div>
-  {/each}
-  <GithubCorner />
+<strong>Mos en mus</strong>
+<div class="container">
+  <div class="cheese">
+    {#each POSITIONS as position}
+      <div class="hole">
+        <!--      🗻-->
+        {#if moles.has(position)}
+          <button
+            class="mole"
+            transition:fly={{ y: 80 }}
+            on:click={whackMole(position)}>
+            🐭
+          </button>
+        {/if}
+      </div>
+    {/each}
+  </div>
 </div>
+<GithubCorner />
 <div class="score">Score: {score}</div>
