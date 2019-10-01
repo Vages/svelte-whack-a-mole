@@ -12,8 +12,8 @@
   const POSITIONS = [...Array(NUMBER_OF_MOLES).keys()];
   const MAX_RETRACT_TIME = 5000;
 
-  // let mice = new Set([]);
-  let mice = new Set([...Array(NUMBER_OF_MOLES).keys()]);
+  let mice = new Set([]);
+  // let mice = new Set([...Array(NUMBER_OF_MOLES).keys()]);
 
   const whackMouse = mouseNumber => () => {
     mice.delete(mouseNumber);
@@ -34,65 +34,123 @@
     mice = mice;
   };
 
-  // setInterval(addMouse, 1000);
+  setInterval(addMouse, 1000);
 </script>
 
 <style>
-  .container {
-    perspective: 22cm;
+  h1 {
+    text-align: center;
+  }
+  .cheese {
+    margin: 0 auto;
+    background-color: #f9e267;
+    height: 60vmin;
+    width: 60vmin;
+    display: grid;
+    grid-gap: 5%;
+    padding: 5%;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 1fr;
   }
 
-  .cheese {
-    transform-style: preserve-3d;
-    margin: 30px auto;
-    padding: 20px;
-    background-color: #f9e267;
-    width: min-content;
-    display: grid;
-    grid-gap: 5px;
-    grid-template-columns: repeat(4, min-content);
-    transform: rotateX(45deg);
+  .holeContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
   }
 
   .hole {
-    transform-style: preserve-3d;
+    /*flex-shrink: 0;*/
+    width: 100%;
+    height: 30%;
     border-radius: 50%;
     background-color: #cfb023;
-    font-size: 80px;
-    width: 80px;
-    height: 20px;
-    margin: 30px 0;
   }
+
   .mouse {
-    transform: rotateX(-45deg) translateY(2px) translateZ(20px);
-    font-size: 50px;
-    position: relative;
-    top: -80px;
-    border: none;
+    margin-top: -50%;
+    margin-left: -100%;
+    width: 100%;
+    height: 100%;
+    font-size: 100%;
     background: none;
-    padding: 0;
-    width: 80px;
-    height: 80px;
+    border: none;
   }
-  .score {
-    font-weight: bold;
-    text-align: center;
-    font-size: 4rem;
+  img {
+    width: 80%;
+    /*height: fill;*/
   }
 </style>
 
-<strong>Mos en mus</strong>
+<!--<style>-->
+<!--  .container {-->
+<!--    /*perspective: 22cm;*/-->
+<!--  }-->
+
+<!--  .cheese {-->
+<!--    width: 100%;-->
+<!--    height: 100%;-->
+<!--    transform-style: preserve-3d;-->
+<!--    margin: 30px auto;-->
+<!--    padding: 20px;-->
+<!--    background-color: #f9e267;-->
+<!--    width: min-content;-->
+<!--    display: grid;-->
+<!--    grid-gap: 5px;-->
+<!--    grid-template-columns: repeat(4, 1fr);-->
+<!--    grid-template-rows: repeat(4, 1fr);-->
+<!--    /*transform: rotateX(45deg);*/-->
+<!--  }-->
+
+<!--  .holeContainer {-->
+<!--    width: 100%;-->
+<!--    height: 100%;-->
+<!--    /*transform-style: preserve-3d;*/-->
+<!--    display: flex;-->
+<!--    align-items: center;-->
+<!--  }-->
+
+<!--  .hole {-->
+<!--    content: 'a';-->
+<!--    flex-shrink: 1;-->
+<!--    flex-grow:1;-->
+<!--    border-radius: 50%;-->
+<!--    background-color: #cfb023;-->
+<!--    width: 100%;-->
+<!--    height: 50%;-->
+<!--  }-->
+
+<!--  .mouse {-->
+<!--    /*transform: rotateX(-45deg) translateY(2px) translateZ(20px);*/-->
+<!--    width: 100%;-->
+<!--    margin-left: -100%;-->
+<!--    font-size: 50px;-->
+<!--    position: relative;-->
+<!--    border: none;-->
+<!--    background: none;-->
+<!--    padding: 0;-->
+<!--    width: 80px;-->
+<!--    height: 80px;-->
+<!--  }-->
+<!--  .score {-->
+<!--    font-weight: bold;-->
+<!--    text-align: center;-->
+<!--    font-size: 4rem;-->
+<!--  }-->
+<!--</style>-->
+<h1>Mos en mus</h1>
 <div class="container">
   <div class="cheese">
     {#each POSITIONS as position}
-      <div class="hole">
-        <!--      🗻-->
+      <div class="holeContainer">
+        <div class="hole" />
         {#if mice.has(position)}
           <button
             class="mouse"
-            transition:fly={{ y: 80, opacity: 100 }}
+            transition:fly={{ y: 50 }}
             on:click={whackMouse(position)}>
-            🐭
+            <img src="/mouse-face.png" />
           </button>
         {/if}
       </div>
