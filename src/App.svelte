@@ -42,16 +42,17 @@
     --base-size: 12vmin;
   }
 
-  .container {
-    perspective: 22cm;
+  .cheese {
+    perspective: 1000px;
+    margin: 0 auto;
+    width: min-content;
   }
 
   h1 {
     text-align: center;
   }
 
-  .cheese {
-    margin: 0 auto;
+  .top {
     background-color: #f9e267;
     width: min-content;
     display: grid;
@@ -95,65 +96,9 @@
   }
 </style>
 
-<!--<style>-->
-<!--  .container {-->
-<!--    /*perspective: 22cm;*/-->
-<!--  }-->
-
-<!--  .cheese {-->
-<!--    width: 100%;-->
-<!--    height: 100%;-->
-<!--    transform-style: preserve-3d;-->
-<!--    margin: 30px auto;-->
-<!--    padding: 20px;-->
-<!--    background-color: #f9e267;-->
-<!--    width: min-content;-->
-<!--    display: grid;-->
-<!--    grid-gap: 5px;-->
-<!--    grid-template-columns: repeat(4, 1fr);-->
-<!--    grid-template-rows: repeat(4, 1fr);-->
-<!--    /*transform: rotateX(45deg);*/-->
-<!--  }-->
-
-<!--  .cell {-->
-<!--    width: 100%;-->
-<!--    height: 100%;-->
-<!--    /*transform-style: preserve-3d;*/-->
-<!--    display: flex;-->
-<!--    align-items: center;-->
-<!--  }-->
-
-<!--  .hole {-->
-<!--    content: 'a';-->
-<!--    flex-shrink: 1;-->
-<!--    flex-grow:1;-->
-<!--    border-radius: 50%;-->
-<!--    background-color: #cfb023;-->
-<!--    width: 100%;-->
-<!--    height: 50%;-->
-<!--  }-->
-
-<!--  .mouse {-->
-<!--    /*transform: rotateX(-45deg) translateY(2px) translateZ(20px);*/-->
-<!--    width: 100%;-->
-<!--    margin-left: -100%;-->
-<!--    font-size: 50px;-->
-<!--    position: relative;-->
-<!--    border: none;-->
-<!--    background: none;-->
-<!--    padding: 0;-->
-<!--    width: 80px;-->
-<!--    height: 80px;-->
-<!--  }-->
-<!--  .score {-->
-<!--    font-weight: bold;-->
-<!--    text-align: center;-->
-<!--    font-size: 4rem;-->
-<!--  }-->
-<!--</style>-->
 <h1>Mos en mus</h1>
-<div class="container">
-  <div class="cheese">
+<div class="cheese">
+  <div class="top">
     {#each POSITIONS as position}
       <div class="cell">
         <div class="hole" />
