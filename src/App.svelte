@@ -48,8 +48,8 @@
   .cheese {
     margin: 0 auto;
     background-color: #f9e267;
-    height: 60vmin;
     width: 60vmin;
+    height: 70vmin;
     display: grid;
     grid-gap: 5%;
     padding: 2% 5%;
@@ -60,10 +60,8 @@
     transform-style: preserve-3d;
   }
 
-  .holeContainer {
-    content: ' ';
+  .cell {
     width: 100%;
-    height: 100%;
     display: flex;
     align-items: center;
 
@@ -71,28 +69,26 @@
   }
 
   .hole {
-    flex-shrink: 0;
-    flex-grow: 1;
     width: 100%;
-    height: 50%;
+    height: 100%;
     border-radius: 50%;
     background-color: #cfb023;
   }
 
   .mouse {
-    transform: rotateX(-45deg) translateY(-40%);
+    transform: rotateX(-45deg) translateY(-50%);
 
-    /*margin-top: -50%;*/
+    margin: 0;
+    padding: 0;
     margin-left: -100%;
     width: 100%;
-    /*height: 100%;*/
-    font-size: 100%;
     background: none;
     border: none;
   }
+
   img {
-    width: 80%;
-    /*height: fill;*/
+    max-width: 80%;
+    max-height: 80%;
   }
 </style>
 
@@ -116,7 +112,7 @@
 <!--    /*transform: rotateX(45deg);*/-->
 <!--  }-->
 
-<!--  .holeContainer {-->
+<!--  .cell {-->
 <!--    width: 100%;-->
 <!--    height: 100%;-->
 <!--    /*transform-style: preserve-3d;*/-->
@@ -156,7 +152,7 @@
 <div class="container">
   <div class="cheese">
     {#each POSITIONS as position}
-      <div class="holeContainer">
+      <div class="cell">
         <div class="hole" />
         {#if mice.has(position)}
           <button
