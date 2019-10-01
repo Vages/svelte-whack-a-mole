@@ -71,12 +71,12 @@
     height: 80px;
   }
   .score {
-    color: #e4e2db;
     font-weight: bold;
     font-size: 4rem;
   }
 </style>
 
+<h1>Mos en mus</h1>
 <div class="cheese">
   {#each POSITIONS as position}
     <div class="hole">
