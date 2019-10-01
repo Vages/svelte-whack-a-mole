@@ -39,13 +39,18 @@
 
 <style>
   :root {
-    --base-size: 12vmin;
+    --base-size: 15vmin;
+  }
+
+  .the-perspective {
+    perspective: 1000px;
   }
 
   .cheese {
-    perspective: 1000px;
     margin: 0 auto;
     width: min-content;
+    transform: rotateX(45deg);
+    transform-style: preserve-3d;
   }
 
   h1 {
@@ -54,15 +59,24 @@
 
   .top {
     background-color: #f9e267;
-    width: min-content;
     display: grid;
     grid-gap: calc(var(--base-size) / 5);
     padding: calc(var(--base-size) / 5);
     grid-template-columns: repeat(4, var(--base-size));
     grid-auto-rows: calc(4 * var(--base-size) / 5);
 
-    transform: rotateX(45deg);
     transform-style: preserve-3d;
+  }
+
+  .front {
+    margin: 0 auto;
+    /*width: calc(var(--base-size) * 4);*/
+    padding: 1rem;
+    height: var(--base-size);
+    background-color: black;
+    transform-style: preserve-3d;
+    transform-origin: top;
+    transform: rotateX(-60deg); /*translateX(-calc(var(--base-size) / 2)); /*rotateX(-60deg);*/
   }
 
   .cell {
@@ -97,22 +111,26 @@
 </style>
 
 <h1>Mos en mus</h1>
-<div class="cheese">
-  <div class="top">
-    {#each POSITIONS as position}
-      <div class="cell">
-        <div class="hole" />
-        {#if mice.has(position)}
-          <button
-            class="mouse"
-            transition:fly={{ y: 100, opacity: 100 }}
-            on:click={whackMouse(position)}>
-            <img src="/mouse-face.png" />
-          </button>
-        {/if}
-      </div>
-    {/each}
+<div class="the-perspective">
+  <div class="cheese">
+    <div class="top">
+      {#each POSITIONS as position}
+        <div class="cell">
+          <div class="hole" />
+          {#if mice.has(position)}
+            <button
+              class="mouse"
+              transition:fly={{ y: 80, opacity: 100 }}
+              on:click={whackMouse(position)}>
+              <img src="/mouse-face.png" />
+            </button>
+          {/if}
+        </div>
+      {/each}
+    </div>
+    <div class="front">
+      <div class="score">Score: {score}</div>
+    </div>
   </div>
 </div>
 <GithubCorner />
-<div class="score">Score: {score}</div>
