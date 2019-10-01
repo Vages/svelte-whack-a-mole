@@ -122,7 +122,7 @@
               class="mouse"
               transition:fly={{ y: 80, opacity: 100 }}
               on:click={whackMouse(position)}>
-              <img src="/mouse-face.png" />
+              <img alt="Mus" src="mouse-face.png" />
             </button>
           {/if}
         </div>
