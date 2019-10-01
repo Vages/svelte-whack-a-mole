@@ -40,7 +40,7 @@
 </script>
 
 <style>
-  .field {
+  .cheese {
     margin: 30px;
     padding: 20px;
     background-color: #f9e267;
@@ -50,7 +50,7 @@
     grid-template-columns: repeat(4, min-content);
   }
 
-  .hill {
+  .hole {
     /*position: fixed;*/
     /*content: 'aosnethusntahoeu';*/
     border-radius: 50%;
@@ -71,14 +71,15 @@
     height: 80px;
   }
   .score {
+    color: #e4e2db;
     font-weight: bold;
     font-size: 4rem;
   }
 </style>
 
-<div class="field">
+<div class="cheese">
   {#each POSITIONS as position}
-    <div class="hill">
+    <div class="hole">
       <!--      🗻-->
       {#if moles.has(position)}
         <button
