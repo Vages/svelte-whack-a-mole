@@ -44,7 +44,6 @@
   }
 
   .the-perspective {
-    /*margin: calc(-.5 * var(--base-size));*/
     perspective: 1000px;
   }
 
@@ -75,7 +74,6 @@
     padding: calc(var(--base-size) / 3);
     grid-template-columns: repeat(4, var(--base-size));
     grid-auto-rows: calc(4 * var(--base-size) / 5);
-    transform-style: preserve-3d;
   }
 
   .front {
@@ -85,7 +83,6 @@
     margin: 0 auto;
     padding: 1rem;
     height: var(--base-size);
-    transform-style: preserve-3d;
     transform-origin: top;
     transform: rotateX(calc(-1 * var(--top-rotation)));
   }
@@ -94,7 +91,6 @@
     width: 100%;
     display: flex;
     align-items: center;
-    transform-style: preserve-3d;
   }
 
   .hole {
