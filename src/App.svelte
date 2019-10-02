@@ -78,18 +78,6 @@
     transform-style: preserve-3d;
   }
 
-  .top:before {
-    content: ' ';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 1000;
-    background: linear-gradient(
-      rgba(253, 244, 133, 0),
-      rgba(253, 244, 133, 0.5)
-    );
-  }
-
   .front {
     border-radius: 0 0 calc(var(--base-size) / 4) calc(var(--base-size) / 4);
     color: #793f14;
