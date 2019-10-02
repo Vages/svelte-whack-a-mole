@@ -74,6 +74,7 @@
     padding: calc(var(--base-size) / 3);
     grid-template-columns: repeat(4, var(--base-size));
     grid-auto-rows: calc(4 * var(--base-size) / 5);
+    -moz-transform-style: preserve-3d; /* Added to preserve Firefox compatibility while ignoring other browsers */
   }
 
   .front {
@@ -91,6 +92,7 @@
     width: 100%;
     display: flex;
     align-items: center;
+    -moz-transform-style: preserve-3d; /* Added to preserve Firefox compatibility while ignoring other browsers */
   }
 
   .hole {
@@ -111,7 +113,7 @@
     cursor: pointer;
   }
 
-  img {
+  .mouse img {
     max-width: 80%;
     max-height: 80%;
   }
