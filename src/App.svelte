@@ -32,7 +32,7 @@
   <StartScreen on:start={startGame} />
 {:else if state === STATES.game}
   <GameScreen on:game-end={endGame} />
-{:else}
+{:else if state === STATES.end}
   <EndScreen score={$score} on:restart={restartGame} />
 {/if}
 

@@ -7,11 +7,15 @@
 
   const dispatch = createEventDispatcher();
 
-  let remainingTime = 30;
+  const GAME_TIME = 30;
+  let remainingTime = GAME_TIME;
 
-  $: if (remainingTime <= 0) {
-    dispatch('game-end');
-  }
+  $: (() => {
+    if (remainingTime <= 0) {
+      dispatch('game-end');
+    }
+  })();
+
   const NUMBER_OF_MICE = 16;
   const POSITIONS = [...Array(NUMBER_OF_MICE).keys()];
   const MAX_RETRACT_TIME = 5000;
@@ -28,11 +32,11 @@
     const newMouse = Math.floor(Math.random() * NUMBER_OF_MICE);
     mice.add(newMouse);
     const timeBeforeItRectracts = Math.floor(Math.random() * MAX_RETRACT_TIME);
-    setTimeout(mouseRectracts(newMouse), timeBeforeItRectracts);
+    setTimeout(mouseRetracts(newMouse), timeBeforeItRectracts);
     mice = mice;
   };
 
-  const mouseRectracts = mouseNumber => () => {
+  const mouseRetracts = mouseNumber => () => {
     mice.delete(mouseNumber);
     mice = mice;
   };
@@ -63,7 +67,6 @@
   .cheese {
     transform: rotateX(var(--top-rotation))
       translateY(calc(-1 * var(--base-size)));
-    /*margin-top: calc(-4 * --base-size);*/
     margin-left: auto;
     margin-right: auto;
     width: min-content;
