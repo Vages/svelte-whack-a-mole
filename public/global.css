@@ -70,6 +70,10 @@ button:focus {
   border-color: #666;
 }
 
+img {
+  -webkit-touch-callout: none;
+}
+
 .main-button {
   text-transform: uppercase;
   color: #813a00;
