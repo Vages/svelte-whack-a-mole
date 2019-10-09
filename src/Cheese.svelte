@@ -1,4 +1,5 @@
 <script>
+  import { onDestroy } from 'svelte';
   import { fly } from 'svelte/transition';
   import { createEventDispatcher } from 'svelte';
 
@@ -7,7 +8,7 @@
 
   const dispatch = createEventDispatcher();
 
-  let remainingTime = 30;
+  let remainingTime = 5;
 
   $: if (remainingTime <= 0) {
     dispatch('game-end');
@@ -17,7 +18,6 @@
   const MAX_RETRACT_TIME = 5000;
 
   let mice = new Set([]);
-  // let mice = new Set([...Array(NUMBER_OF_MICE).keys()]);
 
   const whackMouse = mouseNumber => () => {
     mice.delete(mouseNumber);
@@ -42,8 +42,13 @@
     remainingTime -= 1;
   };
 
-  setInterval(addMouse, 1000);
-  setInterval(decrementTime, 1000);
+  const stopAddingMice = setInterval(addMouse, 1000);
+  const stopCountingDownTime = setInterval(decrementTime, 1000);
+
+  onDestroy(() => {
+    clearInterval(stopAddingMice);
+    clearInterval(stopCountingDownTime);
+  });
 </script>
 
 <style>
