@@ -1,15 +1,17 @@
 <script>
   import { fly } from 'svelte/transition';
+  import { createEventDispatcher } from 'svelte';
+
+  import score from './score.js';
   import GithubCorner from './GithubCorner.svelte';
 
-  let score = 0;
-
-  function incrementScore() {
-    score += 1;
-  }
+  const dispatch = createEventDispatcher();
 
   let remainingTime = 30;
 
+  $: if (remainingTime <= 0) {
+    dispatch('game-end');
+  }
   const NUMBER_OF_MICE = 16;
   const POSITIONS = [...Array(NUMBER_OF_MICE).keys()];
   const MAX_RETRACT_TIME = 5000;
@@ -19,7 +21,7 @@
 
   const whackMouse = mouseNumber => () => {
     mice.delete(mouseNumber);
-    score += 1;
+    $score += 1;
     mice = mice;
   };
 
@@ -187,7 +189,7 @@
       <div class="timer-bar" />
       <div class="game-data">
         <div>Tid: {remainingTime}</div>
-        <div class="score">Score: {score}</div>
+        <div class="score">Score: {$score}</div>
       </div>
     </div>
   </div>
