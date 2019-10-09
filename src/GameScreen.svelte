@@ -10,12 +10,6 @@
   const GAME_TIME = 30;
   let remainingTime = GAME_TIME;
 
-  $: (() => {
-    if (remainingTime <= 0) {
-      dispatch('game-end');
-    }
-  })();
-
   const NUMBER_OF_MICE = 16;
   const POSITIONS = [...Array(NUMBER_OF_MICE).keys()];
   const MAX_RETRACT_TIME = 5000;
@@ -45,13 +39,14 @@
     remainingTime -= 1;
   };
 
-  const stopAddingMice = setInterval(addMouse, 1000);
-  const stopCountingDownTime = setInterval(decrementTime, 1000);
+  const miceInterval = setInterval(addMouse, 1000);
+  const countDown = setInterval(decrementTime, 1000);
 
-  onDestroy(() => {
-    clearInterval(stopAddingMice);
-    clearInterval(stopCountingDownTime);
-  });
+  $: if (remainingTime <= 0) {
+    clearInterval(miceInterval);
+    clearInterval(countDown);
+    dispatch('game-end');
+  }
 </script>
 
 <style>
