@@ -31,5 +31,5 @@
 {:else if state === STATES.game}
   <Cheese on:game-end={endGame} />
 {:else}
-  <EndScreen score={$score} />
+  <EndScreen score={$score} on:restart={restartGame} />
 {/if}
