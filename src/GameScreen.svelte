@@ -180,7 +180,7 @@
           {#if mice.has(position)}
             <button
               class="mouse"
-              transition:fly={{ y: 80, opacity: 100 }}
+              transition:fly|local={{ y: 80, opacity: 100 }}
               on:click={whackMouse(position)}>
               <img alt="Mus" src="mouse-face.png" />
             </button>
