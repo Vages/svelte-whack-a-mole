@@ -1,5 +1,5 @@
 <script>
-  import Cheese from './Cheese.svelte';
+  import GameScreen from './GameScreen.svelte';
   import StartScreen from './StartScreen.svelte';
   import EndScreen from './EndScreen.svelte';
   import score from './score.js';
@@ -29,7 +29,7 @@
 {#if state === STATES.start}
   <StartScreen on:start={startGame} />
 {:else if state === STATES.game}
-  <Cheese on:game-end={endGame} />
+  <GameScreen on:game-end={endGame} />
 {:else}
   <EndScreen score={$score} on:restart={restartGame} />
 {/if}
