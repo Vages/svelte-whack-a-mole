@@ -4,11 +4,10 @@
   import { createEventDispatcher } from 'svelte';
 
   import score from './score.js';
-  import GithubCorner from './GithubCorner.svelte';
 
   const dispatch = createEventDispatcher();
 
-  let remainingTime = 5;
+  let remainingTime = 30;
 
   $: if (remainingTime <= 0) {
     dispatch('game-end');
@@ -199,4 +198,3 @@
     </div>
   </div>
 </div>
-<GithubCorner />

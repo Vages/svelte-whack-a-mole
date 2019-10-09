@@ -2,6 +2,8 @@
   import GameScreen from './GameScreen.svelte';
   import StartScreen from './StartScreen.svelte';
   import EndScreen from './EndScreen.svelte';
+  import GithubCorner from './GithubCorner.svelte';
+
   import score from './score.js';
 
   const STATES = Object.freeze({
@@ -33,3 +35,5 @@
 {:else}
   <EndScreen score={$score} on:restart={restartGame} />
 {/if}
+
+<GithubCorner />
