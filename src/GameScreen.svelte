@@ -35,9 +35,9 @@
   const addMouse = () => {
     const newMouse = Math.floor(Math.random() * NUMBER_OF_MICE);
     mice.add(newMouse);
-    const timeBeforeItRectracts = Math.floor(Math.random() * MAX_RETRACT_TIME);
+    const timeBeforeItRetracts = Math.floor(Math.random() * MAX_RETRACT_TIME);
     const timeBeforeNextSpawns = Math.floor(Math.random() * MAX_SPAWN_TIME);
-    setTimeout(mouseRetracts(newMouse), timeBeforeItRectracts);
+    setTimeout(mouseRetracts(newMouse), timeBeforeItRetracts);
     if (remainingTime > 0) {
       addMouseTimeout = setTimeout(addMouse, timeBeforeNextSpawns);
     }
