@@ -66,7 +66,7 @@
     Lyst på sommerjobb eller fast jobb i Knowit?
     <br />
     Send en enkel e-post til
-    <a href="hei@knowit.no">hei@knowit.no</a>
+    <a href="mailto:hei@knowit.no">hei@knowit.no</a>
   </div>
   <button class="main-button" on:click={pressRestart}>Spill igjen</button>
 </div>
