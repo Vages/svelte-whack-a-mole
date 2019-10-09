@@ -18,9 +18,11 @@
   let mice = new Set([]);
 
   const whackMouse = mouseNumber => () => {
-    mice.delete(mouseNumber);
-    $score += 1;
-    mice = mice;
+    const mouseWasDeleted = mice.delete(mouseNumber);
+    if (mouseWasDeleted) {
+      $score += 1;
+      mice = mice;
+    }
   };
 
   let addMouseTimeout;
