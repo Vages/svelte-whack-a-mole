@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway:400,800&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,600,800&display=swap');
 
 html,
 body {
-  background-color: #2A3348;
+  background-color: #2a3348;
   position: relative;
   width: 100%;
   height: 100%;
@@ -15,6 +15,7 @@ body {
   box-sizing: border-box;
   font-family: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu,
     Cantarell, 'Helvetica Neue', sans-serif;
+  font-weight: 600;
 }
 
 a {
@@ -67,4 +68,16 @@ button:active {
 
 button:focus {
   border-color: #666;
+}
+
+.main-button {
+  text-transform: uppercase;
+  color: #813a00;
+  background-color: #ffd503;
+  border: none;
+  border-radius: 1.2rem;
+  padding: 1rem;
+  letter-spacing: 0.25rem;
+  font-weight: 800;
+  font-size: 2rem;
 }
