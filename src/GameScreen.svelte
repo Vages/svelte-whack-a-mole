@@ -82,6 +82,7 @@
   }
 
   .top {
+    user-select: none;
     background: #fae358;
     display: grid;
     grid-gap: calc(var(--base-size) / 2) calc(var(--base-size) / 2);
