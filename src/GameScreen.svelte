@@ -13,6 +13,7 @@
   const NUMBER_OF_MICE = 16;
   const POSITIONS = [...Array(NUMBER_OF_MICE).keys()];
   const MAX_RETRACT_TIME = 5000;
+  const MAX_SPAWN_TIME = 1000;
 
   let mice = new Set([]);
 
@@ -22,28 +23,36 @@
     mice = mice;
   };
 
-  const addMouse = () => {
-    const newMouse = Math.floor(Math.random() * NUMBER_OF_MICE);
-    mice.add(newMouse);
-    const timeBeforeItRectracts = Math.floor(Math.random() * MAX_RETRACT_TIME);
-    setTimeout(mouseRetracts(newMouse), timeBeforeItRectracts);
-    mice = mice;
-  };
+  let addMouseTimeout;
 
   const mouseRetracts = mouseNumber => () => {
     mice.delete(mouseNumber);
     mice = mice;
   };
 
+  const addMouse = () => {
+    const newMouse = Math.floor(Math.random() * NUMBER_OF_MICE);
+    mice.add(newMouse);
+    const timeBeforeItRectracts = Math.floor(Math.random() * MAX_RETRACT_TIME);
+    const timeBeforeNextSpawns = Math.floor(Math.random() * MAX_SPAWN_TIME);
+    setTimeout(mouseRetracts(newMouse), timeBeforeItRectracts);
+    if (remainingTime > 0) {
+      addMouseTimeout = setTimeout(addMouse, timeBeforeNextSpawns);
+    }
+    mice = mice;
+  };
+
+  addMouse();
+
   const decrementTime = () => {
     remainingTime -= 1;
   };
-
-  const miceInterval = setInterval(addMouse, 1000);
   const countDown = setInterval(decrementTime, 1000);
 
   $: if (remainingTime <= 0) {
-    clearInterval(miceInterval);
+    if (addMouseTimeout) {
+      clearTimeout(addMouseTimeout);
+    }
     clearInterval(countDown);
     dispatch('game-end');
   }
